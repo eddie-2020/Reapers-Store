@@ -43,6 +43,11 @@ export default function ProductPreview({ onAddToCart }) {
     onAddToCart(product, quantity, selectedSize, selectedColor);
   };
 
+  // NEW RELATED PRODUCT FILTER LOGIC
+  const relatedProducts = PRODUCTS
+    .filter(p => p.category === product.category && p.id !== product.id)
+    .slice(0, 4);
+
   return (
     <div className="bg-white">
 
@@ -175,13 +180,13 @@ export default function ProductPreview({ onAddToCart }) {
         <h2 className="text-3xl font-bold mb-8">Related Products</h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {PRODUCTS.slice(0, 4).map(p => (
+          {relatedProducts.map(p => (
             <button
               key={p.id}
               onClick={() => navigate(`/product/${p.id}`)}
               className="border rounded-xl overflow-hidden hover:shadow-lg transition"
             >
-              <img src={p.img} className="w-full h-48 object-cover" />
+              <img src={p.mainImage} className="w-full h-48 object-cover" />
               <div className="p-4 text-left">
                 <p className="font-medium">{p.title}</p>
                 <p className="text-gray-600 text-sm">₦{p.price.toLocaleString()}</p>

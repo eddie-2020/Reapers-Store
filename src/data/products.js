@@ -27,7 +27,7 @@ export const PRODUCTS = [
     ],
     mainImage: "https://res.cloudinary.com/dtlvq9feq/image/upload/v1763316764/916b629c11640896c632e9e96a4b7b1a-xxxlarge_pij09e.jpg",
     desc: "Bold black lounge set to standout at every outing.",
-    category: "essential",
+    category: "essentials",
     inStock: true,
     sizes: ["XS", "S", "M", "L"],
     colors: ["black"]

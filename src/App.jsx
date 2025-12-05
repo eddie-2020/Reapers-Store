@@ -59,7 +59,7 @@ export default function App() {
                   </div>
 
                   <ProductGrid 
-                    items={PRODUCTS}
+                    items={PRODUCTS.slice(0, 4)}
                     onQuickView={handleQuickView}
                     onAdd={addToCart}
                     onProductClick={goToProduct}
