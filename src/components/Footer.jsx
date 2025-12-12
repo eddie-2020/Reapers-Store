@@ -1,4 +1,8 @@
 // components/Footer.jsx
+import { FaTiktok, FaInstagram, FaTwitter } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+
+
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
@@ -13,13 +17,21 @@ export default function Footer() {
               timeless style, and pieces that tell your unique story.
             </p>
             <div className="flex space-x-4">
-              {['📘', '📷', '🐦', '💼'].map((icon, index) => (
-                <button
+              {[
+                { icon: <FaTiktok size={20} />, link: "https://tiktok.com" },
+                { icon: <FaInstagram size={20} />, link: "https://instagram.com" },
+                { icon: <FaTwitter size={20} />, link: "https://twitter.com" },
+                { icon: <MdEmail size={22} />, link: "mailto:example@gmail.com" },
+              ].map((item, index) => (
+                <a
                   key={index}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-200"
                 >
-                  {icon}
-                </button>
+                  {item.icon}
+                </a>
               ))}
             </div>
           </div>

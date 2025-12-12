@@ -3,7 +3,7 @@ export const PRODUCTS = [
   {
     id: "p1",
     title: "REAPERS BABY TEE",
-    price: 15000,
+    price: 200000,
     images: [
       "https://res.cloudinary.com/dtlvq9feq/image/upload/v1763316761/52fced5e5c8e97e9f292aae0b478967f-xxxlarge_mnvooc.jpg",
       "https://res.cloudinary.com/dtlvq9feq/image/upload/v1763316765/8b5f33ba0735149131f26c7170b6e7ad-xxxlarge_rtzag0.jpg",
@@ -19,7 +19,7 @@ export const PRODUCTS = [
   {
     id: "p2",
     title: "Reapes Lounge Set",
-    price: 40000,
+    price: 400000,
     images: [
       "https://res.cloudinary.com/dtlvq9feq/image/upload/v1763316764/916b629c11640896c632e9e96a4b7b1a-xxxlarge_pij09e.jpg",
       "https://res.cloudinary.com/dtlvq9feq/image/upload/v1763316766/aee955331b139cabf1e30aa0d6208d88-xxxlarge_iwjlcm.jpg",

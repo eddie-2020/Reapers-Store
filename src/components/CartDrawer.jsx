@@ -1,4 +1,5 @@
 import { useCart } from "../context/CartContext";
+import { FiTrash } from "react-icons/fi";
 
 export default function CartDrawer() {
   const {
@@ -51,7 +52,12 @@ export default function CartDrawer() {
 
                       <div className="flex items-center gap-3">
                         <div className="font-semibold">₦{(item.qty * item.price).toLocaleString()}</div>
-                        <button onClick={() => removeItem(item.id)} className="text-gray-400 hover:text-red-500">🗑️</button>
+                        <button 
+                          onClick={() => removeItem(item.id)} 
+                          className="text-gray-400 hover:text-red-500 p-1 rounded-full transition-colors duration-200 cursor-pointer"
+                        >
+                          <FiTrash size={18} />
+                        </button>
                       </div>
                     </div>
                   </div>

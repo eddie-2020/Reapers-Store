@@ -1,5 +1,6 @@
 // components/ProductCard.jsx
 import { useState } from 'react';
+import { AiOutlineEye } from "react-icons/ai";
 
 export default function ProductCard({ p, onQuickView, onAdd, onProductClick }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -46,7 +47,7 @@ export default function ProductCard({ p, onQuickView, onAdd, onProductClick }) {
               className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
               title="Quick View"
             >
-              👁️
+              <AiOutlineEye size={20} />
             </button>
 
             <button
