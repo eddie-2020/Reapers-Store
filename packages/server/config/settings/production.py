@@ -2,6 +2,6 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*'] # Should be configured properly for prod
-
-# Production specific settings
+ALLOWED_HOSTS = os.environ.get(
+    "ALLOWED_HOSTS", ".onrender.com"
+).split(",")
