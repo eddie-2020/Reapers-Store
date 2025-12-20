@@ -11,14 +11,13 @@ export default function FilterDrawer({
         priceRange, setPriceRange
     } = filters;
 
-    // Extract unique options
+
     const categories = [...new Set(products.map(p => p.category).filter(Boolean))];
     const colors = [...new Set(products.flatMap(p => p.colors))];
     const sizes = [...new Set(products.flatMap(p => p.sizes))];
 
     return (
         <>
-            {/* Drawer */}
             <div className={`fixed top-0 right-0 h-full w-80 bg-white/95 backdrop-blur-xl shadow-2xl transition-transform duration-300 z-60 border-l border-gray-100 ${open ? "translate-x-0" : "translate-x-full"}`}>
                 <div className="flex flex-col h-full">
                     <div className="p-6 border-b flex items-center justify-between bg-white/50">
@@ -30,7 +29,7 @@ export default function FilterDrawer({
 
                     <div className="flex-1 overflow-y-auto p-6 space-y-8">
 
-                        {/* Category */}
+
                         <div>
                             <h4 className="font-medium text-gray-900 mb-3">Category</h4>
                             <div className="space-y-2">
@@ -52,7 +51,7 @@ export default function FilterDrawer({
                             </div>
                         </div>
 
-                        {/* Price Range */}
+
                         <div>
                             <div className="flex justify-between text-sm mb-2">
                                 <span className="font-medium text-gray-900">Max Price</span>
@@ -69,7 +68,7 @@ export default function FilterDrawer({
                             />
                         </div>
 
-                        {/* Colors */}
+
                         <div>
                             <h4 className="font-medium text-gray-900 mb-3">Color</h4>
                             <div className="flex flex-wrap gap-2">
@@ -91,7 +90,7 @@ export default function FilterDrawer({
                             </div>
                         </div>
 
-                        {/* Sizes */}
+
                         <div>
                             <h4 className="font-medium text-gray-900 mb-3">Size</h4>
                             <div className="grid grid-cols-4 gap-2">
@@ -131,7 +130,6 @@ export default function FilterDrawer({
                 </div>
             </div>
 
-            {/* Backdrop */}
             {open && <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 transition-opacity" onClick={onClose} />}
         </>
     );

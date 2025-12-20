@@ -37,7 +37,6 @@ const ProductForm = () => {
     const [selectedColors, setSelectedColors] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    // Delete Modal State
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [imageToDelete, setImageToDelete] = useState(null);
 
@@ -55,7 +54,7 @@ const ProductForm = () => {
         if (!imageToDelete) return;
 
         try {
-            await axios.delete(`http://localhost:8000/api/product-images/${imageToDelete}/`);
+            await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/product-images/${imageToDelete}/`);
             // Find which slot had this image and remove it
             const colorKey = Object.keys(imageSlots).find(key => imageSlots[key].id === imageToDelete);
             if (colorKey) {
@@ -79,7 +78,7 @@ const ProductForm = () => {
 
     const fetchProduct = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/api/products/${id}/`);
+            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/products/${id}/`);
             const p = response.data;
             setFormData({
                 name: p.name,
@@ -96,11 +95,10 @@ const ProductForm = () => {
                 console.error("Failed to parse color", e);
             }
 
-            // Map existing images to slots based on color index
             if (p.images && Array.isArray(p.images) && parsedColors.length > 0) {
                 const initialSlots = {};
                 p.images.forEach((img, index) => {
-                    const colorName = parsedColors[index]; // Assume 1:1 mapping
+                    const colorName = parsedColors[index];
                     if (colorName) {
                         initialSlots[colorName] = {
                             file: null,
@@ -146,18 +144,10 @@ const ProductForm = () => {
     };
 
     const removeImageSlot = (colorName) => {
-        // If it's an existing image, we might need to call the delete API?
-        // Or just remove from UI for now?
-        // The previous logic had a specific delete API for existing images.
-        // We should integrate that.
         const slot = imageSlots[colorName];
         if (slot && !slot.isNew) {
-            // It's existing, trigger modal
             openDeleteModal(slot.id);
-            // Note: confirmDelete needs to know which color we are deleting to update UI
-            // We'll handle that in confirmDelete using imageToDelete state
         } else {
-            // It's new, just clear state
             const newSlots = { ...imageSlots };
             delete newSlots[colorName];
             setImageSlots(newSlots);
@@ -176,9 +166,6 @@ const ProductForm = () => {
         if (selectedColors.includes(colorName)) {
             const newColors = selectedColors.filter(c => c !== colorName);
             setSelectedColors(newColors);
-            // Optionally remove image? Better to keep it in case they toggle back, or strictly remove?
-            // Strict mapping implies if color is gone, image is irrelevant.
-            // But let's leave it in state, just won't be submitted/shown.
         } else {
             if (selectedColors.length >= 5) {
                 toast.error("Maximum 5 colors allowed");
@@ -211,14 +198,6 @@ const ProductForm = () => {
         }
 
         if (Object.keys(imageSlots).length > 0) {
-            // We append images in the order of selectedColors
-            // This relies on the backend appending them in receiving order
-            // And assumes we are adding to the end or replacing all (if we cleared earlier).
-            // Since we can't easily "insert" into a FileList field in Django without re-uploading all,
-            // we assume standard 'append' behavior is sufficient for 'additions'.
-            // If the user did complex reordering/deletions, the indices might shift.
-            // But with strict "1 color = 1 image" and "Delete is immediate", it should hold up.
-
             selectedColors.forEach(color => {
                 const slot = imageSlots[color];
                 if (slot && slot.isNew) {
@@ -230,10 +209,10 @@ const ProductForm = () => {
         try {
             const config = { headers: { 'Content-Type': 'multipart/form-data' } };
             if (isEdit) {
-                await axios.patch(`http://localhost:8000/api/products/${id}/`, data, config);
+                await axios.patch(`${import.meta.env.VITE_API_BASE_URL}/api/products/${id}/`, data, config);
                 toast.success("Product updated!", { id: toastId });
             } else {
-                await axios.post('http://localhost:8000/api/products/', data, config);
+                await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/products/`, data, config);
                 toast.success("Product created!", { id: toastId });
             }
             navigate('/');

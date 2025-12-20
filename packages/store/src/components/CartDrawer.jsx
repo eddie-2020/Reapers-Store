@@ -20,19 +20,17 @@ export default function CartDrawer() {
   const config = {
     reference: (new Date()).getTime().toString(),
     email: email,
-    amount: subtotal * 100, // Paystack is in kobo
+    amount: subtotal * 100,
     publicKey: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
   };
 
   const onSuccess = (reference) => {
-    // Implementation for whatever you want to do with reference and after success call.
     alert("Payment Successful! Reference: " + reference.reference);
     clearCart();
     closeCart();
   };
 
   const onClose = () => {
-    // implementation for  whatever you want to do when the Paystack dialog closed.
     console.log('closed');
   }
 
@@ -40,7 +38,6 @@ export default function CartDrawer() {
 
   return (
     <>
-      {/* Drawer */}
       <div className={`fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transition-transform duration-300 z-50 ${open ? "translate-x-0" : "translate-x-full"}`}>
         <div className="flex flex-col h-full">
           <div className="p-6 border-b flex items-center justify-between">
@@ -136,7 +133,6 @@ export default function CartDrawer() {
         </div>
       </div>
 
-      {/* Backdrop */}
       {open && <div className="fixed inset-0 bg-black/20 z-40" onClick={closeCart} />}
     </>
   );

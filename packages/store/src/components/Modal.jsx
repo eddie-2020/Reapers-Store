@@ -1,4 +1,3 @@
-// components/Modal.jsx
 import { useState } from 'react';
 
 export default function Modal({ product, open, onClose, onAdd }) {
@@ -6,7 +5,6 @@ export default function Modal({ product, open, onClose, onAdd }) {
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
 
-  // Reset selections when product changes
   if (open && product && (!selectedSize || !product.sizes.includes(selectedSize))) {
     if (product.sizes?.length > 0) setSelectedSize(product.sizes[0]);
     if (product.colors?.length > 0) setSelectedColor(product.colors[0]);
@@ -23,7 +21,6 @@ export default function Modal({ product, open, onClose, onAdd }) {
         >
           ✕
         </button>
-        {/* Image Gallery Section */}
         <div className="md:w-1/2 flex flex-col">
           <div className='relative'>
             <img
@@ -32,7 +29,6 @@ export default function Modal({ product, open, onClose, onAdd }) {
               alt={product.title}
             />
 
-            {/* New Arrival badge */}
             {(() => {
               if (!product.created_at) return null;
               const date = new Date(product.created_at);
@@ -49,7 +45,6 @@ export default function Modal({ product, open, onClose, onAdd }) {
             })()}
           </div>
 
-          {/* Thumbnail Gallery */}
           {product.images.length > 1 && (
             <div className="flex gap-2 px-4 py-3 overflow-x-auto">
               {product.images.map((image, index) => (
@@ -72,7 +67,6 @@ export default function Modal({ product, open, onClose, onAdd }) {
           )}
         </div>
 
-        {/* Product Details Section */}
         <div className="p-6 md:w-1/2 flex flex-col overflow-y-auto">
           <div className="flex justify-between items-start mb-4">
             <div>
@@ -85,7 +79,6 @@ export default function Modal({ product, open, onClose, onAdd }) {
 
           <p className="text-gray-600 mt-4 leading-relaxed grow">{product.description}</p>
 
-          {/* Additional Product Info */}
           <div className="mt-4 space-y-3 text-sm text-gray-600">
             {product.category && (
               <div><span className="font-medium">Category:</span> {product.category}</div>
@@ -93,7 +86,6 @@ export default function Modal({ product, open, onClose, onAdd }) {
           </div>
 
           <div className="space-y-6 mt-6">
-            {/* Size Selection */}
             {product.sizes?.length > 0 && (
               <div>
                 <span className="text-sm font-medium text-gray-700 block mb-2">Size</span>
@@ -114,7 +106,6 @@ export default function Modal({ product, open, onClose, onAdd }) {
               </div>
             )}
 
-            {/* Color Selection */}
             {product.colors?.length > 0 && (
               <div>
                 <span className="text-sm font-medium text-gray-700 block mb-2">Color</span>

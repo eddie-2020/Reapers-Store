@@ -1,4 +1,3 @@
-// components/ProductCard.jsx
 import { useState } from 'react';
 import { AiOutlineEye } from "react-icons/ai";
 import { FiPlus } from "react-icons/fi";
@@ -19,7 +18,7 @@ export default function ProductCard({ p, onQuickView, onAdd, onProductClick }) {
     <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
       <div className="relative overflow-hidden h-72" onClick={handleProductClick}>
 
-        {/* Skeleton Loader */}
+
         {!isLoaded && (
           <div className="absolute inset-0 bg-gray-200 animate-pulse z-10" />
         )}

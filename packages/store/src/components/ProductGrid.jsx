@@ -1,4 +1,4 @@
-// components/ProductGrid.jsx
+
 import ProductCard from "./ProductCard";
 
 export default function ProductGrid({ items, onQuickView, onAdd, onProductClick, loading, emptyMessage = "No products found." }) {

@@ -7,7 +7,6 @@ export function useCart() {
 }
 
 export function CartProvider({ children }) {
-  // cart keyed by product id
   const [cart, setCart] = useState(() => {
     try {
       const savedCart = localStorage.getItem("reapers_cart");
@@ -18,7 +17,7 @@ export function CartProvider({ children }) {
     }
   });
 
-  // Persist cart to localStorage whenever it changes
+
   useEffect(() => {
     try {
       localStorage.setItem("reapers_cart", JSON.stringify(cart));
@@ -43,21 +42,19 @@ export function CartProvider({ children }) {
 
   function addToCart(product, quantity = 1, selectedSize = "", selectedColor = "") {
     setCart(prev => {
-      // Determine the ultimate variant properties
       const size = selectedSize || product.selectedSize || "";
       const color = selectedColor || product.selectedColor || "";
 
-      // Determine the base product ID (handle if 'product' is already a cart item or raw product)
-      // If it's a cart item, it might have .productId. If raw, use .id.
       const baseId = product.productId || product.id;
 
-      // Create a unique key for this variant
+
       const cartItemId = `${baseId}-${color}-${size}`;
 
       const prevItem = prev[cartItemId] || {};
       const newQty = (prevItem.qty || 0) + (quantity || 1);
 
-      // Determine correct image for this color variant
+
+
       let imageToUse = product.images?.[0] || product.img || product.image;
       if (color && product.colors && product.images) {
         const colorIdx = product.colors.indexOf(color);
@@ -70,12 +67,11 @@ export function CartProvider({ children }) {
         ...prev,
         [cartItemId]: {
           ...product,
-          // Ensure we preserve or set the specific fields we need
           title: product.title || product.name,
-          id: cartItemId, // The unique key for the cart
-          productId: baseId, // Creating a reference to original ID
+          id: cartItemId,
+          productId: baseId,
           price: product.price,
-          image: imageToUse, // Fallbacks handled above
+          image: imageToUse,
           qty: newQty,
           selectedSize: size,
           selectedColor: color

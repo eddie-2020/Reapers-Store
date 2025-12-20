@@ -1,4 +1,4 @@
-// components/StickyBanner.jsx
+
 import { useState } from 'react';
 
 export default function StickyBanner() {
@@ -15,7 +15,7 @@ export default function StickyBanner() {
         <button className="text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30 transition-colors">
           Learn More
         </button>
-        <button 
+        <button
           onClick={() => setIsVisible(false)}
           className="ml-4 p-1 hover:bg-white/20 rounded-full transition-colors"
         >

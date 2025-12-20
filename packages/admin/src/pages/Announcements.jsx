@@ -16,7 +16,7 @@ const Announcements = () => {
 
     const navigate = useNavigate();
     const { logout } = useAuth();
-    const API_URL = 'http://localhost:8000/api/core/announcements/';
+    const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/core/announcements/`;
 
     useEffect(() => {
         fetchAnnouncements();
@@ -122,7 +122,6 @@ const Announcements = () => {
                 </header>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Form Section */}
                     <div className="lg:col-span-1">
                         <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
                             <h2 className="text-xl font-bold text-gray-900 mb-6">{isEditing ? 'Edit Announcement' : 'New Announcement'}</h2>
@@ -185,7 +184,6 @@ const Announcements = () => {
                         </div>
                     </div>
 
-                    {/* List Section */}
                     <div className="lg:col-span-2">
                         <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
                             <table className="w-full text-left border-collapse">

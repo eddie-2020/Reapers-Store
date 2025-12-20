@@ -1,4 +1,4 @@
-// components/HeroBanner.jsx
+
 
 import { FaArrowRight } from "react-icons/fa";
 

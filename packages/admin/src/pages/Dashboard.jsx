@@ -20,7 +20,7 @@ const Dashboard = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/products/');
+            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/products/`);
             setProducts(response.data);
         } catch (error) {
             console.error('Error fetching products', error);
@@ -38,7 +38,7 @@ const Dashboard = () => {
 
         const toastId = toast.loading('Deleting...');
         try {
-            await axios.delete(`http://localhost:8000/api/products/${productToDelete}/`);
+            await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/products/${productToDelete}/`);
             toast.success('Product deleted successfully', { id: toastId });
             fetchProducts();
             setIsDeleteModalOpen(false);

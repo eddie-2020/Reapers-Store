@@ -5,7 +5,7 @@ export default function SplashScreen({ onFinish }) {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        // Animate progress bar over 2.5 seconds
+
         const timer = setInterval(() => {
             setProgress((prev) => {
                 if (prev >= 100) {

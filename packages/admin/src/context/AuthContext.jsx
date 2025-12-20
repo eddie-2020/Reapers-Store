@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 const AuthContext = createContext(null);
 
-const INACTIVITY_LIMIT = 15 * 60 * 1000; // 15 minutes
+const INACTIVITY_LIMIT = 15 * 60 * 1000;
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
     const [lastActivity, setLastActivity] = useState(Date.now());
 
     useEffect(() => {
-        // ... (existing token logic)
         if (token) {
             axios.defaults.headers.common['Authorization'] = `Token ${token}`;
             setUser({ name: 'Admin' });
@@ -24,15 +23,13 @@ export const AuthProvider = ({ children }) => {
         }
     }, [token]);
 
-    // Activity Tracker
+
     const updateActivity = useCallback(() => {
         setLastActivity(Date.now());
     }, []);
 
     useEffect(() => {
         if (!token) return;
-
-        // Listeners for activity
         window.addEventListener('mousemove', updateActivity);
         window.addEventListener('keydown', updateActivity);
         window.addEventListener('click', updateActivity);
@@ -42,10 +39,10 @@ export const AuthProvider = ({ children }) => {
         const intervalId = setInterval(() => {
             const now = Date.now();
             if (now - lastActivity > INACTIVITY_LIMIT) {
-                logout(false); // pass false to avoid double toast if user clicks logout manually (to be implemented)
+                logout(false);
                 toast.error("Session expired due to inactivity.");
             }
-        }, 60000); // Check every minute
+        }, 60000);
 
         return () => {
             window.removeEventListener('mousemove', updateActivity);
@@ -59,7 +56,7 @@ export const AuthProvider = ({ children }) => {
     const login = async (username, password) => {
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/token-auth/', {
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/token-auth/`, {
                 username,
                 password
             });

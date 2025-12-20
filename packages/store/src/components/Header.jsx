@@ -1,4 +1,3 @@
-// components/Header.jsx
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FiSearch } from "react-icons/fi";
@@ -21,7 +20,6 @@ export default function Header({ cartCount, onCartOpen, currentView, onNavigate,
   const navigationItems = [
     { label: 'Home', path: '/' },
     { label: 'Catalogs', path: '/catalog' },
-    // Add other links if they existed, e.g., About, Contact. Assuming basic store links.
   ];
 
   const isActive = (path) => {
@@ -29,14 +27,9 @@ export default function Header({ cartCount, onCartOpen, currentView, onNavigate,
     return location.pathname.startsWith(path);
   };
 
-  // Use controlled prop if available, otherwise internal state
   const queryValue = searchValue !== undefined ? searchValue : internalSearchQuery;
 
-  const handleSearchChange = (e) => {
-    // ... (existing helper if needed, or inline)
-  }
 
-  // Close search if clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -53,7 +46,7 @@ export default function Header({ cartCount, onCartOpen, currentView, onNavigate,
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []); // Removed dependency on searchValue
+  }, []);
 
 
   return (
@@ -101,18 +94,7 @@ export default function Header({ cartCount, onCartOpen, currentView, onNavigate,
               </button>
             ))}
           </nav>
-          {/* 
-            Wait, I should fix the NAV mapping logic properly. The button is the container.
-            If I want the underline to have rounded caps, `border-b` is square. 
-            I will use a `span` with `border-b`? No, standard CSS border-b is always square ends unless we use SVG or separate div.
-            Tomi probably just means "rounded-full" style for the active pill if it were a pill, but it's an underline.
-            Maybe they mean the button background? No "separator" implies the line.
-            I will assume standard border is fine but maybe I can use `stroke-linecap` if it was SVG.
-            Let's just update the search toggle logic primarily and add `rounded-full` to the button to see if it helps soften it, or just ignore subtle border-radius on lines for now as it's CSS-limited without SVG/divs.
-            Actually, I will rewrite the nav item to use a generic 'relative' container and an absolute 'bottom-0' div for the line, which supports rounded-full.
-          */}
 
-          {/* UPDATED NAV LOGIC BELOW IN REPLACEMENT CONTENT */}
 
           {/* Right side icons */}
           <div className="flex items-center space-x-2 sm:space-x-4 relative">
@@ -132,7 +114,6 @@ export default function Header({ cartCount, onCartOpen, currentView, onNavigate,
                   setInternalSearchQuery(query);
                 }
 
-                // Always update local search results for the dropdown, regardless of parent control
                 if (!products || products.length === 0 || query.trim() === '') {
                   setSearchResults([]);
                 } else {
@@ -233,6 +214,6 @@ export default function Header({ cartCount, onCartOpen, currentView, onNavigate,
         )}
 
       </div>
-    </header>
+    </header >
   );
 }
