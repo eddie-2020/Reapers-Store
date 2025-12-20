@@ -6,7 +6,6 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ProductForm from './pages/ProductForm';
 import Announcements from './pages/Announcements';
-import './App.css';
 
 function App() {
   return (
