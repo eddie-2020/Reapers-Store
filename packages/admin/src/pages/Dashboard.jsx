@@ -78,7 +78,13 @@ const Dashboard = () => {
                     </div>
                 </header>
 
-                <div className="flex justify-end mb-6">
+                <div className="flex justify-end mb-6 gap-3">
+                    <button
+                        onClick={() => navigate('/orders')}
+                        className="bg-white text-gray-700 border border-gray-300 text-xs px-3 py-3 rounded-lg font-medium hover:bg-gray-50 transition-all shadow-sm active:scale-95 cursor-pointer flex items-center gap-1"
+                    >
+                        View Orders
+                    </button>
                     <button
                         onClick={() => navigate('/announcements')}
                         className="bg-black text-white text-xs px-3 py-3 rounded-lg font-medium hover:bg-gray-800 transition-all shadow-sm active:scale-95 cursor-pointer flex items-center gap-1"

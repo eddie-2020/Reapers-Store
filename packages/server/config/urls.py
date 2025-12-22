@@ -25,6 +25,7 @@ urlpatterns = [
     path("api/token-auth/", views.obtain_auth_token, name='api_token_auth'),
     path("api/core/", include("core.urls")),
     path("api/", include("products.urls")),
+    path("api/orders/", include("orders.urls")),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),

@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ProductForm from './pages/ProductForm';
 import Announcements from './pages/Announcements';
+import Orders from './pages/Orders';
 
 function App() {
   return (
@@ -18,6 +19,12 @@ function App() {
           <Route path="/announcements" element={
             <ProtectedRoute>
               <Announcements />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/orders" element={
+            <ProtectedRoute>
+              <Orders />
             </ProtectedRoute>
           } />
 

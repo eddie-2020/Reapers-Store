@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { usePaystackPayment } from "react-paystack";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import { useCart } from "../context/CartContext";
 import { FiTrash } from "react-icons/fi";
 
 export default function CartDrawer() {
+  const navigate = useNavigate();
   const {
     cart,
     open,
@@ -56,19 +59,57 @@ export default function CartDrawer() {
     }
   };
 
-  const onSuccess = (reference) => {
-    alert("Payment Successful! Reference: " + reference.reference);
-    clearCart();
-    setView('cart');
-    setBillingInfo({
-      fullName: "",
-      email: "",
-      phone: "",
-      address: "",
-      city: "",
-      state: ""
-    });
-    closeCart();
+  const onSuccess = async (reference) => {
+    // 1. Prepare Order Payload
+    const orderData = {
+      fullName: billingInfo.fullName,
+      email: billingInfo.email,
+      phone: billingInfo.phone,
+      address: billingInfo.address,
+      city: billingInfo.city,
+      state: billingInfo.state,
+      amount: subtotal, // Store raw amount
+      reference: reference.reference,
+      items: Object.values(cart).map(item => ({
+        product_name: item.title,
+        quantity: item.qty,
+        price: item.price,
+        size: item.selectedSize || null,
+        color: item.selectedColor || null,
+        image: item.image || null
+      }))
+    };
+
+    try {
+      // 2. Send to Backend
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/orders/create/`, orderData);
+
+      alert("Payment Successful! Order placed.");
+
+      // 3. Clear cart and state
+      clearCart();
+      setView('cart');
+      setBillingInfo({
+        fullName: "",
+        email: "",
+        phone: "",
+        address: "",
+        city: "",
+        state: ""
+      });
+
+      // 4. Close and redirect
+      closeCart();
+      navigate('/');
+
+    } catch (error) {
+      console.error("Order creation failed:", error);
+      alert("Payment successful but failed to record order. Please contact support with ref: " + reference.reference);
+      // Still close and clear or keep open? Usually better to fail safe for user but log error.
+      // For now, let's treat it as success from user perspective but warn.
+      closeCart();
+      navigate('/');
+    }
   };
 
   const onClose = () => {
