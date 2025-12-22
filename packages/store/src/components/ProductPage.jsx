@@ -174,15 +174,6 @@ export default function ProductPage({ onAddToCart, cartItems }) {
                             {product.desc}
                         </p>
 
-                        <div className="mt-4 space-y-3 text-sm text-gray-600">
-                            {product.category && (
-                                <div>
-                                    <span className="font-semibold">Category:</span>{" "}
-                                    {product.category}
-                                </div>
-                            )}
-                        </div>
-
                         {product.sizes && product.sizes.length > 0 && (
                             <div className="space-y-3">
                                 <span className="font-semibold text-gray-900">Size</span>

@@ -35,7 +35,7 @@ export default function FilterDrawer({
                             <div className="space-y-2">
                                 <button
                                     onClick={() => setCategory("")}
-                                    className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${category === "" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-100"}`}
+                                    className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors cursor-pointer ${category === "" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-100"}`}
                                 >
                                     All Categories
                                 </button>
@@ -43,7 +43,7 @@ export default function FilterDrawer({
                                     <button
                                         key={c}
                                         onClick={() => setCategory(c)}
-                                        className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${category === c ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-100"}`}
+                                        className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors cursor-pointer ${category === c ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-100"}`}
                                     >
                                         {c}
                                     </button>
@@ -74,7 +74,7 @@ export default function FilterDrawer({
                             <div className="flex flex-wrap gap-2">
                                 <button
                                     onClick={() => setColor("")}
-                                    className={`px-3 py-1.5 rounded-full text-xs border transition-all ${color === "" ? "bg-gray-900 text-white border-gray-900" : "border-gray-300 text-gray-600 hover:border-gray-400"}`}
+                                    className={`px-3 py-1.5 rounded-full text-xs border transition-all cursor-pointer ${color === "" ? "bg-gray-900 text-white border-gray-900" : "border-gray-300 text-gray-600 hover:border-gray-400"}`}
                                 >
                                     All
                                 </button>
@@ -82,7 +82,7 @@ export default function FilterDrawer({
                                     <button
                                         key={c}
                                         onClick={() => setColor(c === color ? "" : c)}
-                                        className={`px-3 py-1.5 rounded-full text-xs border transition-all ${color === c ? "bg-gray-900 text-white border-gray-900" : "border-gray-300 text-gray-600 hover:border-gray-400"}`}
+                                        className={`px-3 py-1.5 rounded-full text-xs border transition-all cursor-pointer ${color === c ? "bg-gray-900 text-white border-gray-900" : "border-gray-300 text-gray-600 hover:border-gray-400"}`}
                                     >
                                         {c}
                                     </button>
@@ -98,7 +98,7 @@ export default function FilterDrawer({
                                     <button
                                         key={s}
                                         onClick={() => setSize(s === size ? "" : s)}
-                                        className={`py-2 text-sm rounded-md border transition-all ${size === s ? "bg-gray-900 text-white border-gray-900" : "border-gray-300 text-gray-600 hover:border-gray-400"}`}
+                                        className={`py-2 text-sm rounded-md border transition-all cursor-pointer ${size === s ? "bg-gray-900 text-white border-gray-900" : "border-gray-300 text-gray-600 hover:border-gray-400"}`}
                                     >
                                         {s}
                                     </button>

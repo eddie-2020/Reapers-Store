@@ -16,7 +16,7 @@ export default function ProductCard({ p, onQuickView, onAdd, onProductClick }) {
 
   return (
     <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-      <div className="relative overflow-hidden h-72" onClick={handleProductClick}>
+      <div className="relative overflow-hidden h-48 md:h-72" onClick={handleProductClick}>
 
 
         {!isLoaded && (
@@ -46,7 +46,7 @@ export default function ProductCard({ p, onQuickView, onAdd, onProductClick }) {
         })()}
       </div>
 
-      <div className="p-5">
+      <div className="p-3 md:p-5">
         <div
           className="font-bold text-gray-900 text-lg mb-1 hover:text-gray-700 cursor-pointer"
           onClick={handleProductClick}
@@ -58,7 +58,7 @@ export default function ProductCard({ p, onQuickView, onAdd, onProductClick }) {
         <div className="flex justify-between items-center">
           <div className="font-semibold text-gray-900 text-md">₦{p.price.toLocaleString()}</div>
 
-          <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="hidden md:flex gap-2 opacity-100 xl:opacity-0 xl:group-hover:opacity-100 transition-opacity duration-300">
             <button
               onClick={(e) => {
                 e.stopPropagation();

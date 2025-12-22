@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 export default function ProductGrid({ items, onQuickView, onAdd, onProductClick, loading, emptyMessage = "No products found." }) {
   if (loading) {
     return (
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-pulse">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 animate-pulse">
         {[...Array(4)].map((_, i) => (
           <div key={i} className="bg-gray-100 rounded-xl h-80" />
         ))}
@@ -22,7 +22,7 @@ export default function ProductGrid({ items, onQuickView, onAdd, onProductClick,
   }
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
       {items.map((p) => (
         <ProductCard
           key={p.id}
