@@ -335,7 +335,7 @@ export default function CartDrawer() {
             )}
 
             {view === 'cart' && Object.keys(cart).length > 0 && (
-              <button onClick={clearCart} className="w-full py-3 border border-gray-300 rounded-lg font-medium text-gray-700">
+              <button onClick={clearCart} className="w-full py-3 border border-gray-300 rounded-lg font-medium text-gray-700 cursor-pointer">
                 Clear Cart
               </button>
             )}
