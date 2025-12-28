@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 import SplashScreen from './components/SplashScreen';
 import FilterDrawer from './components/FilterDrawer';
 
-import { useCart } from "./context/CartContext";
+import { useCart } from "./context/useCart";
 
 export default function App() {
     const navigate = useNavigate();

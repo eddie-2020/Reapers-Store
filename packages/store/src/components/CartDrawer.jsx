@@ -2,7 +2,7 @@ import { useState } from "react";
 import { usePaystackPayment } from "react-paystack";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/useCart";
 import { FiTrash } from "react-icons/fi";
 
 export default function CartDrawer() {
