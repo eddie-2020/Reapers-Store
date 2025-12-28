@@ -26,7 +26,7 @@ const Login = () => {
             } else {
                 setError('Invalid credentials');
             }
-        } catch (err) {
+        } catch {
             setError('Login failed');
         } finally {
             setLoading(false);

@@ -7,7 +7,7 @@ export default function StickyBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="sticky top-0 z-40 bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 px-4">
+    <div className="sticky top-0 z-40 bg-linear-to-r from-orange-500 to-red-500 text-white py-2 px-4">
       <div className="max-w-7xl mx-auto flex items-center justify-center">
         <span className="text-sm font-medium mr-4">
           🎉 Limited Time: Buy 2 Get 1 Free on Swimwear!

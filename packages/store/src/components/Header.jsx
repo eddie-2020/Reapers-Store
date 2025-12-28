@@ -5,7 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import logo from '../assets/logo2.png';
 
-export default function Header({ cartCount, onCartOpen, currentView, onNavigate, products = [], searchValue, onSearchChange }) {
+export default function Header({ cartCount, onCartOpen, products = [], searchValue, onSearchChange }) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -73,7 +73,7 @@ export default function Header({ cartCount, onCartOpen, currentView, onNavigate,
             </button>
 
             {/* Logo */}
-            <button onClick={() => { navigate('/'); setMobileMenuOpen(false); }} className="flex-shrink-0 cursor-pointer">
+            <button onClick={() => { navigate('/'); setMobileMenuOpen(false); }} className="shrink-0 cursor-pointer">
               <img src={logo} alt="REAPERS" className="h-10 lg:h-12 w-auto object-contain" />
             </button>
           </div>

@@ -3,7 +3,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { FiPlus } from "react-icons/fi";
 
 export default function ProductCard({ p, onQuickView, onAdd, onProductClick }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, _setCurrentImageIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const handleProductClick = () => {

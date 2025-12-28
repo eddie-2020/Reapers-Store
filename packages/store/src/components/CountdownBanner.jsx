@@ -30,7 +30,7 @@ export default function CountdownBanner() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-3 px-4">
+    <div className="bg-linear-to-r from-blue-600 to-purple-700 text-white py-3 px-4">
       <div className="max-w-7xl mx-auto flex items-center justify-center space-x-6">
         <div className="flex items-center space-x-2">
           <span className="bg-white/20 p-1 rounded-full">

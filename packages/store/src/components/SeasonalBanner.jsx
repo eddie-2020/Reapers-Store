@@ -1,7 +1,7 @@
 
 export default function SeasonalBanner() {
   return (
-    <div className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-4 px-4">
+    <div className="bg-linear-to-r from-emerald-500 to-teal-600 text-white py-4 px-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="bg-white/20 p-2 rounded-full">

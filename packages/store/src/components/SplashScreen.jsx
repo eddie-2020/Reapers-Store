@@ -27,7 +27,7 @@ export default function SplashScreen({ onFinish }) {
     }, [onFinish]);
 
     return (
-        <div className="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center w-screen h-screen">
+        <div className="fixed inset-0 z-9999 bg-white flex flex-col items-center justify-center w-screen h-screen">
             <div className="mb-8 flex flex-col items-center">
                 <img src={logo} alt="REAPERS" className="h-32 md:h-64 object-contain" />
                 <p className="text-gray-500 text-sm tracking-widest text-center mt-0 uppercase">
